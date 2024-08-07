@@ -1,0 +1,7 @@
+pandas
+numpy
+Django
+Flask
+PyPDF2
+scikit-learn
+requests
