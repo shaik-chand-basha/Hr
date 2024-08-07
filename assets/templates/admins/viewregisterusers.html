@@ -1,0 +1,64 @@
+{% extends 'admins/adminbase.html' %}
+{% block title %}User List{% endblock %}
+{% block user_list %}active{% endblock %}
+{% block content %}
+<style>
+    .jumbotron {
+        font-family: "Book Antiqua";
+        background: white;
+        margin-top: 10px;
+    }
+</style>
+
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-header">
+                <center>
+                    <h1 class="text-center h3" style="color:fuchsia;font-size:40px"> User List</h1>
+                  
+                <div class="card card-body">
+                    
+                    <table class="table table-striped" style="background-color: orange;">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="color:red;font-size: 30px; padding: 10px;" >Sno</th>
+                                <th scope="col" style="color:red;font-size: 30px; padding: 10px;">Name</th>
+                                <th scope="col" style="color:red;font-size: 30px; padding: 10px;">Login Id</th>
+                                <th scope="col" style="color:red;font-size: 30px; padding: 10px;">Mobile</th>
+                                <th scope="col" style="color:red;font-size: 30px; padding: 20px;">Email</th>
+                                <th scope="col" style="color:red;font-size: 30px; padding: 20px;">Status</th>
+                                <th scope="col" style="color:red;font-size: 30px; padding: 10px;">Activate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in data %}
+                            <tr>
+                                <td style="font-size:20px">{{ forloop.counter }}</td>
+                                <td style="font-size:20px">{{ user.name }}</td>
+                                <td style="font-size:20px">{{ user.loginid }}</td>
+                                <td style="font-size:20px">{{ user.mobile }}</td>
+                                <td style="font-size:20px">{{ user.email }}</td>
+                                <td style="font-size:20px">{{ user.status }}</td>
+
+                                {% if user.status == 'waiting' %}
+                                <td>
+                                    <a class="btn-link" href="/ActivaUsers/?uid={{ user.id }}"
+                                        style="color:DARKBLUE">Activate</a>
+                                </td>
+                                {% else %}
+                                <td style="color:crimson;font-size:20px"> Activated</td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
